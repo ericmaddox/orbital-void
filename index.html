@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Orbital//Void — v1.2</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="gameWrap">
+  <div class="canvasCol">
+    <div class="hud hudRow" style="align-items:center;">
+      <div id="waveLabel">Wave: 1</div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="small">Gold:</div><div id="gold" class="badge">0</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="small">Status:</div><div id="statusMsg" class="badge">Running</div>
+        </div>
+        <button id="pauseBtn" class="btn">Pause</button>
+        <button id="restartBtn" class="btn">Restart (R)</button>
+      </div>
+    </div>
+
+    <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+    <div class="hud" style="display:flex;align-items:center;gap:12px;">
+      <div style="min-width:220px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="font-weight:700">HP</div>
+          <div id="hpText" class="small statText">100 / 100</div>
+        </div>
+        <div class="hpBarWrap" style="margin-top:6px;">
+          <div id="hpBar" class="hpBar" style="width:100%"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:220px;">
+        <div class="small">Player stats (live)</div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div class="small">Atk: <span id="statAttack">10</span></div>
+          <div class="small">FR: <span id="statFireRate">1.0</span>/s</div>
+          <div class="small">Armor: <span id="statArmor">0%</span></div>
+          <div class="small">Speed: <span id="statSpeed">100</span>px/s</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-weight:800">Upgrade Bay</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="muteBtn" class="btn">🔊</button>
+        <div class="small">Save: <input id="saveToggle" type="checkbox" checked title="Save gold & upgrades to localStorage"></div>
+      </div>
+    </div>
+
+    <div id="upgradePanel" style="display:flex;flex-direction:column;gap:8px"></div>
+
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button id="buyAllBtn" class="btn">Buy Attack (FOR THE WIN)</button>
+      <div class="small">Hint: upgrade Attack early if you dont want to suck</div>
+    </div>
+
+    <div style="font-weight:700;margin-top:6px">Legend</div>
+    <div class="legend small">
+      <div class="item"><div style="width:18px;height:12px;background:#66d9ff;border-radius:3px"></div>Player</div>
+      <div class="item"><div style="width:18px;height:12px;background:#ff7b7b;border-radius:3px"></div>Enemy (basic)</div>
+      <div class="item"><div style="width:18px;height:12px;background:#ffcd6b;border-radius:3px"></div>Enemy (heavy)</div>
+      <div class="item"><div style="width:18px;height:12px;background:#ab6bff;border-radius:3px"></div>Enemy (ranged)</div>
+      <div class="item"><div style="width:18px;height:12px;background:#999;border-radius:3px"></div>Obstacle</div>
+    </div>
+
+    <div style="font-weight:700;margin-top:6px">Event Log</div>
+    <div id="log" class="log"></div>
+
+    <div class="footer">
+      <div class="small">Press R to restart. Pause toggles autoshoot & updates.</div>
+      <div class="small">Performance: capped particles & bullets.</div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
